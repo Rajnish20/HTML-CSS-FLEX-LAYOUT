@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Flex_Layout-1</title>
+        <style>
+            body{
+                padding: 1em;
+            }
+            .headerContainer{
+                display: flex;
+                flex-flow: column wrap;
+                align-content: center;
+                background-color: greenyellow;
+                font-family: monospace;
+                font-weight: bold;
+                color: white;
+                padding: 10px;
+            }
+            .footerContainer{
+                display: flex;
+                flex-flow: column wrap;
+                align-content: center;
+                background: greenyellow;
+                color: black;
+                font-weight: bold;
+                font-family: monospace;
+                padding: 10px;
+            }
+
+            article{
+                padding: 10px;
+                margin: 10px;
+                background: aqua;
+                border: 1px solid black;
+            }
+            .mainContainer{
+                display: flex;
+                flex-flow: row wrap;
+
+            }
+
+            .mainContentItem{
+                text-align: left;
+            }
+            .mainContentItem{
+                flex: 4;
+            }
+            .navItem{
+                flex:1;
+                background: #D7E8D4;
+                padding: 10px;
+            }
+            .sidebarItem{
+                flex:1;
+                background: beige;
+                padding: 10px;;
+            }
+            .mainContentItem{
+                order: 1;
+            }
+            .navItem{
+                order: 3;
+            }
+            .sidebarItem{
+                order: 2;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="headerContainer"><h2>
+            This is a Header
+        </h2></header>
+        <div class = "mainContainer">
+            <section class="mainContentItem">
+                <article>
+                    <h2>First Article</h2>
+                    <p>Nothing is more important than you. Just Remember That.That is the only Truth.</p>
+                </article>
+                <article>
+                 <h2>Second Article</h2>
+                 <p>Nothing is more important than you. Just Remember That.That is the only Truth.</p>
+                </article>
+                <article>
+                 <h2>Third Article</h2>
+                 <p>Nothing is more important than you. Just Remember That.That is the only Truth.</p>
+                </article>
+            </section>
+            <sidebar class ="sidebarItem"><p>Aside</p></sidebar>
+            <nav class="navItem"><p>Nav</p></nav>
+        </div>
+        <footer class="footerContainer"><p>This is Footer</p></footer>
+    </body>
+
+</html>
