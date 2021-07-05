@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Input</title>
+    <link rel="stylesheet" href="../Styles/simple_form.css">
+</head>
+<body>
+    <form>
+        <header class ="headerContainer">
+            <h1>
+                HTML 5 Input Form
+            </h1>
+        </header>
+        <div>
+            <label for="text">Enter Name: </label>
+            <input type="text" id="text" name="text">
+            <error-output class="text-error" for="text"></error-output>
+        </div>
+        <div>
+            <label for="pwd">Enter Password: </label>
+            <input type="password" id="pwd" name="pwd" required>
+            <error-output class="pwd-error" for="pwd"></error-output>
+        </div>
+        <div>
+            <label for="email">Enter Email: </label>
+            <input type="email" id="email" name="email">
+            <error-output class="email-error" for="email"></error-output>
+        </div>
+        <div>
+            <label for="url">Enter URL: </label>
+            <input type="url" id="url" name="url">
+        </div>
+        <div>
+            <label for="number">Enter Number: </label>
+            <input type="number" id="number" name="number">
+        </div>
+        <div>
+            <label for="tel">Enter Telephone No : </label>
+            <input type="tel" id="tel" name="tel">
+            <error-output class="tel-error"></error-output>
+        </div>
+        <div>
+            <label for="search">Search : </label>
+            <input type="search" id="search" name="search">
+        </div>
+        <div class="nativeDatePicker">
+            <label for="party">Choose a Date: </label>
+            <input type="date" id="party" name="bday">
+        </div>
+        <div>
+            <label for="salary">Choose Salary: </label>
+            <input type="range" id="salary" name="salary" min="50000"
+            max="500000" step="100" value="50000">
+            <output class="salary-output" for="salary">50000</output>
+        </div>
+        <div>
+            <button onclick="submitFunction()">Submit</button>
+        </div>
+    </form>
+    <script>
+        const text = document.querySelector('#text');
+        const textError = document.querySelector('.text-error');
+        text.addEventListener('input',function(){
+            let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z]{2,}$');
+            if(nameRegex.test(text.value)){
+                textError.textContent ="";
+            }else{
+                textError.textContent = "Name is Incorrect";
+            }
+        });
+
+        const pwd = document.querySelector('#pwd');
+        const pwdError = document.querySelector('.pwd-error');
+        pwd.addEventListener('input',function(){
+            let pwdRegex= RegExp('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&*-+=()]).{8,}$');
+            if(pwdRegex.test(pwd.value)){
+                pwdError.textContent ="";
+            }else{
+                pwdError.textContent="Invalid Password";
+            }
+        });
+
+        const email = document.querySelector('#email');
+        const emailError = document.querySelector('.email-error');
+        email.addEventListener('input',function(){
+            let emailRegex = RegExp('^[A-Za-z0-9-\\+]+(\\.[A-Za-z0-9-]+)*@' + '[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$');
+            if(emailRegex.test(email.value)){
+                emailError.textContent="";
+            }else{
+                emailError.textContent="Invalid Email";
+            }
+        });
+
+        const tel = document.querySelector('#tel');
+        const telError = document.querySelector('.tel-error');
+        tel.addEventListener('input',function(){
+            let telRegex = RegExp('\\d{2} \\d{10}');
+            if(telRegex.test(tel.value)){
+                telError.textContent ="";
+            }else{
+                telError.textContent = "Invalid Telephone Number";
+            }
+        });
+
+        const salary = document.querySelector('#salary');
+        const output = document.querySelector('.salary-output');
+        output.textContent = salary.value;
+        salary.addEventListener('input', function(){
+            output.textContent = salary.value;
+        });
+
+        function submitFunction(){
+            alert("Form has been submitted successfully");
+        }
+    </script>
+    
+</body>
+</html>
